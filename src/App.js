@@ -28,9 +28,9 @@ class App extends Component {
   nameChangedHandler = (event) => {
     this.setState( {
       persons: [
-        { name: 'Max', age: 28 },
-        { name: event.target.value, age: 29 },
-        { name: 'Stephanie', age: 26 }
+        { id: '123', name: 'Max', age: 28 },
+        { id: '124', name: event.target.value, age: 29 },
+        { id: '125', name: 'Stephanie', age: 26 }
       ]
     } )
   }
@@ -39,7 +39,7 @@ class App extends Component {
     // copy array
     // const persons = this.state.persons.slice();
     const persons = [...this.state.persons];
-    
+
     // remove element from array
     persons.splice(personIndex, 1);
     this.setState({persons: persons});
@@ -68,7 +68,9 @@ class App extends Component {
           {this.state.persons.map((p, index)=>{
               return <Person 
                     click= {() => this.deletePersonHandler(index)}
-                    name={p.name} age={p.age}/>
+                    name={p.name} age={p.age}
+                    key={p.id}
+                    />
           })}
 
 
